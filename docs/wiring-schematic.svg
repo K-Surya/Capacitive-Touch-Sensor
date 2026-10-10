@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="650" viewBox="0 0 1100 650" role="img" aria-labelledby="title desc">
+  <title id="title">Capacitive touch Morse translator wiring schematic</title>
+  <desc id="desc">An ESP32-style controller connected to a software SPI SSD1306 OLED, an RC touch electrode, and an indicator LED.</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #172033; }
+      .title { font-size: 25px; font-weight: 700; }
+      .subtitle { font-size: 14px; fill: #526078; }
+      .label { font-size: 15px; font-weight: 600; }
+      .small { font-size: 13px; }
+      .pin { font-size: 13px; }
+      .box { fill: #f7f9fc; stroke: #24344d; stroke-width: 2; rx: 12; }
+      .part { fill: #fff; stroke: #24344d; stroke-width: 2; rx: 8; }
+      .wire { fill: none; stroke: #2b6cb0; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .ground { stroke: #374151; }
+      .node { fill: #2b6cb0; }
+      .note { fill: #fff8e6; stroke: #d69e2e; stroke-width: 1.5; rx: 8; }
+    </style>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#2b6cb0"/></marker>
+  </defs>
+  <rect width="1100" height="650" fill="#ffffff"/>
+  <text x="40" y="48" class="title">Capacitive Touch Morse Code Translator</text>
+  <text x="40" y="74" class="subtitle">Wiring guide based on GPIO assignments in main.ino · ESP32-style 3.3 V board</text>
+
+  <rect x="400" y="125" width="300" height="400" class="box"/>
+  <text x="550" y="158" class="label" text-anchor="middle">ESP32-style controller</text>
+  <text x="550" y="181" class="small" text-anchor="middle">GPIO numbers must match your board</text>
+  <line x1="425" y1="195" x2="675" y2="195" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <text x="430" y="230" class="pin">GPIO 23 · OLED MOSI</text>
+  <text x="430" y="270" class="pin">GPIO 18 · OLED CLK</text>
+  <text x="430" y="310" class="pin">GPIO 21 · OLED DC</text>
+  <text x="430" y="350" class="pin">GPIO 22 · OLED CS</text>
+  <text x="430" y="390" class="pin">GPIO 19 · OLED RST</text>
+  <text x="430" y="440" class="pin">GPIO 4 · TOUCH</text>
+  <text x="430" y="480" class="pin">GPIO 2 · LED</text>
+  <text x="430" y="510" class="pin">3V3 / GND</text>
+
+  <rect x="60" y="210" width="225" height="185" class="part"/>
+  <text x="172" y="240" class="label" text-anchor="middle">SSD1306 OLED</text>
+  <text x="80" y="275" class="small">MOSI</text><text x="80" y="300" class="small">CLK / SCK</text>
+  <text x="80" y="325" class="small">DC</text><text x="80" y="350" class="small">CS</text>
+  <text x="80" y="375" class="small">RES · VCC · GND</text>
+  <path d="M285 271 H340 V225 H400" class="wire"/>
+  <path d="M285 296 H350 V265 H400" class="wire"/>
+  <path d="M285 321 H360 V305 H400" class="wire"/>
+  <path d="M285 346 H370 V345 H400" class="wire"/>
+  <path d="M285 371 H380 V385 H400" class="wire"/>
+  <text x="296" y="214" class="small">signal wires</text>
+
+  <rect x="800" y="210" width="245" height="130" class="part"/>
+  <text x="922" y="240" class="label" text-anchor="middle">Touch pad / electrode</text>
+  <text x="820" y="275" class="small">Metal foil or conductive pad</text>
+  <text x="820" y="300" class="small">Keep accessible to fingertip</text>
+  <path d="M700 435 H755 V275 H800" class="wire"/>
+  <circle cx="755" cy="435" r="5" class="node"/>
+  <path d="M755 435 V380 H900" class="wire"/>
+  <rect x="895" y="365" width="90" height="40" class="part"/>
+  <text x="940" y="390" class="small" text-anchor="middle">1 MΩ*</text>
+  <path d="M940 405 V455" class="wire ground"/>
+  <path d="M918 455 H962 M924 463 H956 M932 471 H948" class="wire ground"/>
+  <text x="970" y="467" class="small">GND</text>
+  <text x="800" y="495" class="small">*Suggested starting value; tune for your pad/board.</text>
+
+  <path d="M700 475 H755 V555 H820" class="wire"/>
+  <rect x="820" y="535" width="48" height="40" class="part"/>
+  <text x="844" y="561" class="small" text-anchor="middle">R</text>
+  <path d="M868 555 H900" class="wire"/>
+  <path d="M900 535 L940 555 L900 575 Z" fill="#fff" stroke="#24344d" stroke-width="2"/>
+  <path d="M940 535 V575" stroke="#24344d" stroke-width="3"/>
+  <path d="M940 555 H980 V600" class="wire ground"/>
+  <path d="M958 600 H1002 M964 608 H996 M972 616 H988" class="wire ground"/>
+  <text x="800" y="525" class="small">GPIO 2 → series resistor → LED → GND</text>
+  <text x="980" y="580" class="small">LED</text>
+
+  <rect x="60" y="445" width="225" height="105" class="note"/>
+  <text x="78" y="475" class="label">OLED power</text>
+  <text x="78" y="500" class="small">Connect VCC to the voltage</text>
+  <text x="78" y="521" class="small">required by your module. Tie all</text>
+  <text x="78" y="542" class="small">grounds together.</text>
+  <text x="40" y="630" class="subtitle">GPIO 4 sensing node: electrode and discharge resistor connect to the same node; resistor returns to GND.</text>
+</svg>

@@ -1,0 +1,20 @@
+<mxfile host="app.diagrams.net" modified="2026-10-10T12:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="touch-morse-wiring" name="Wiring schematic">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="650" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Capacitive Touch Morse Code Translator — ESP32-style wiring guide" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=22;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="25" width="850" height="40" as="geometry"/></mxCell>
+        <mxCell id="board" value="ESP32-style controller&#xa;&#xa;GPIO 23 — OLED MOSI&#xa;GPIO 18 — OLED CLK&#xa;GPIO 21 — OLED DC&#xa;GPIO 22 — OLED CS&#xa;GPIO 19 — OLED RST&#xa;GPIO 4 — TOUCH&#xa;GPIO 2 — LED&#xa;3V3 / GND" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f7f9fc;strokeColor=#24344d;strokeWidth=2;fontSize=15;align=left;spacingLeft=20;" vertex="1" parent="1"><mxGeometry x="400" y="125" width="300" height="400" as="geometry"/></mxCell>
+        <mxCell id="oled" value="SSD1306 OLED&#xa;&#xa;MOSI&#xa;CLK / SCK&#xa;DC&#xa;CS&#xa;RES&#xa;VCC and GND" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#24344d;strokeWidth=2;fontSize=15;" vertex="1" parent="1"><mxGeometry x="60" y="210" width="225" height="185" as="geometry"/></mxCell>
+        <mxCell id="touch" value="Touch pad / electrode&#xa;&#xa;Metal foil or conductive pad&#xa;Keep accessible to fingertip" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#24344d;strokeWidth=2;fontSize=15;" vertex="1" parent="1"><mxGeometry x="800" y="210" width="245" height="130" as="geometry"/></mxCell>
+        <mxCell id="resistor" value="1 MΩ*&#xa;discharge resistor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#24344d;strokeWidth=2;fontSize=14;" vertex="1" parent="1"><mxGeometry x="885" y="365" width="120" height="55" as="geometry"/></mxCell>
+        <mxCell id="ground_note" value="Resistor returns to GND. Touch electrode and resistor share the GPIO 4 sensing node.&#xa;*Suggested starting value; tune for the pad and board.&#xa;&#xa;OLED VCC must match the module requirements. Tie all grounds together." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e6;strokeColor=#d69e2e;fontSize=14;" vertex="1" parent="1"><mxGeometry x="60" y="445" width="320" height="130" as="geometry"/></mxCell>
+        <mxCell id="led_path" value="GPIO 2 → series resistor (220–1,000 Ω) → LED → GND" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#24344d;strokeWidth=2;fontSize=14;" vertex="1" parent="1"><mxGeometry x="760" y="500" width="300" height="70" as="geometry"/></mxCell>
+        <mxCell id="m1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2b6cb0;strokeWidth=2;endArrow=none;" edge="1" parent="1" source="oled" target="board"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="m2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2b6cb0;strokeWidth=2;endArrow=none;" edge="1" parent="1" source="board" target="touch"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="m3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2b6cb0;strokeWidth=2;endArrow=none;" edge="1" parent="1" source="board" target="resistor"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="m4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2b6cb0;strokeWidth=2;endArrow=none;" edge="1" parent="1" source="board" target="led_path"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
